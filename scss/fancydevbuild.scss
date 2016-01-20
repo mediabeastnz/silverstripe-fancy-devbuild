@@ -2,3 +2,15 @@
  * Default styles for the fancy dev build button.
  * This contains both variables and layout for both cms/frontend.
  */
+#devbuild-trigger {
+
+    .icon {
+        background-image: url(../images/icon.png);
+        background-size: 16px 16px;
+    }
+
+    &.loading .icon {
+        background-image: url(../images/loading.gif);
+    }
+
+}

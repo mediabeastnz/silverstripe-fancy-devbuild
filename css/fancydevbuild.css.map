@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAMI,uBAAM,CACF,gBAAgB,CAAE,uBAAuB,CACzC,eAAe,CAAE,SAAS,CAG9B,+BAAgB,CACZ,gBAAgB,CAAE,0BAA0B",
+"sources": ["../scss/fancydevbuild.scss"],
 "names": [],
 "file": "fancydevbuild.css"
 }
