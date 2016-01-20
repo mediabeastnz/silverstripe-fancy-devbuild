@@ -1,6 +1,6 @@
 {
 "version": 3,
-"mappings": "AAMI,uBAAM,CACF,gBAAgB,CAAE,uBAAuB,CACzC,eAAe,CAAE,SAAS,CAG9B,+BAAgB,CACZ,gBAAgB,CAAE,0BAA0B",
+"mappings": "AAMI,uBAAM,CACF,gBAAgB,CAAE,uBAAuB,CACzC,eAAe,CAAE,SAAS,CAG9B,+BAAgB,CACZ,gBAAgB,CAAE,0BAA0B,CAGhD,6BAAc,CACV,gBAAgB,CAAE,wBAAwB,CAG9C,6BAAc,CACV,KAAK,CAAE,OAAO",
 "sources": ["../scss/fancydevbuild.scss"],
 "names": [],
 "file": "fancydevbuild.css"

@@ -13,4 +13,12 @@
         background-image: url(../images/loading.gif);
     }
 
+    &.error .icon {
+        background-image: url(../images/error.png);
+    }
+
+    &.error .text {
+        color: #EF4836;
+    }
+
 }
