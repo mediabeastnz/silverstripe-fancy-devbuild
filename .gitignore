@@ -1,0 +1,13 @@
+*.DS_Store
+*._.DS_Store
+*.sass-cache
+*.codekit*
+*.sublime-*
+*prepros.cfg
+*Thumbs.db
+*web.config
+*.log
+*.buildpath
+*.project
+*.settings
+*.idea

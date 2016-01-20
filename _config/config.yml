@@ -1,0 +1,10 @@
+---
+Name: fancydevbuildconfig
+After: 'framework/*','cms/*'
+---
+LeftAndMain:
+  extra_requirements_javascript:
+    - 'fancy-devvuild/javascript/LeftAndMain.Fancy-devbuild.js'
+ContentController:
+  extensions:
+    - FancyDevBuild
