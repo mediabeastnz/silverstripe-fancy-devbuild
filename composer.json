@@ -1,0 +1,20 @@
+{
+  "name": "mediabeast/fancy-devbuild",
+  "description": "Simple SilverStripe module to trigger a dev/build via ajax",
+  "type": "silverstripe-module",
+  "homepage": "https://github.com/mediabeastnz/silverstripe-fancy-devbuild",
+  "keywords": ["silverstripe", "tool", "build", "dev", "admin", "mediabeast"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Myles Beardsmore",
+      "email": "mediabeastnz@gmail.com"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/mediabeastnz/silverstripe-fancy-devbuild/issues"
+  },
+  "extra": {
+    "screenshots": []
+  }
+}
