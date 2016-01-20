@@ -2,7 +2,7 @@
     var dev_trigger = "#devbuild-trigger",
         reset_time = 5000;
     // inject the link into the cms menu
-    $(".cms-menu-list").append('<li class="link devbuild"><a id="devbuild-trigger"><span class="icon icon-16 icon-help">&nbsp;</span><span class="text">Dev/Build</span></a></li>');
+    $(".cms-menu-list").append('<li class="link devbuild"><a href="#" id="devbuild-trigger"><span class="icon icon-16 icon-help">&nbsp;</span><span class="text">Dev/Build</span></a></li>');
 
     // look out for click
     $(dev_trigger).click(function(e) {
