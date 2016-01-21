@@ -29,12 +29,12 @@
                     $(dev_trigger).reset_trigger();
                 }, reset_time);
             } else {
-                // reload CMS
-                $('.cms-container').entwine('ss').reloadCurrentPanel();
                 // change text back to default
                 $(dev_trigger).set_trigger("Build Successful","success");
                 setTimeout(function(){
                     $(dev_trigger).reset_trigger();
+                    // reload CMS
+                    $('.cms-container').entwine('ss').reloadCurrentPanel();
                 }, reset_time);
             }
         })
