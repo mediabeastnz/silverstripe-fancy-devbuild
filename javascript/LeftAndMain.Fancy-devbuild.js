@@ -30,7 +30,9 @@
                 }, reset_time);
             } else {
                 // change text back to default
-                $(dev_trigger).set_trigger("Build Successful","success");
+                var changes = $(data).find("li[style='color: blue'],li[style='color: green']").length,
+                    change_message = ((changes != 1) ? changes+" changes" : "1 change")+" occurred";
+                $(dev_trigger).set_trigger(change_message,"success");
                 setTimeout(function(){
                     $(dev_trigger).reset_trigger();
                     // reload CMS
