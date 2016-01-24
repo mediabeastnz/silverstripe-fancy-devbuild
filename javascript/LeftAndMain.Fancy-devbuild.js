@@ -23,6 +23,15 @@
 
             // search for any errors from returned data
             if (data.search("ERROR") > 0) {
+                // Display error data in new tab/window
+                var win=window.open('about:blank');
+                with(win.document)
+                {
+                    open();
+                    write(data);
+                    close();
+                }
+
                 // change text to show an error has occured
                 $this.attr('href', 'dev/build')
                     .set_trigger("Build failed","error");
