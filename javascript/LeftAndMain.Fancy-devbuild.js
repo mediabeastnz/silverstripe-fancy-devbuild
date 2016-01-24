@@ -7,10 +7,11 @@
 
     // look out for click
     $(dev_trigger).click(function(e) {
-
+        var $this = $(this);
         e.preventDefault();
+        if ($this.data("executing")) return false;
 
-        $(dev_trigger).set_trigger("Building...","loading");
+        $this.set_trigger("Building...","loading");
 
         $.ajax({
             method: "POST",
@@ -18,30 +19,29 @@
         })
         .done(function( data, textStatus, xhr ) {
             // remove classes
-            $(dev_trigger).removeClass("loading");
+            $this.removeClass("loading");
 
             // search for any errors from returned data
             if (data.search("ERROR") > 0) {
                 // change text to show an error has occured
-                $(dev_trigger).attr('href', 'dev/build')
+                $this.attr('href', 'dev/build')
                     .set_trigger("Build failed","error");
                 setTimeout(function(){
-                    $(dev_trigger).reset_trigger();
+                    $this.reset_trigger();
                 }, reset_time);
             } else {
                 // change text back to default
-                var changes = $(data).find("li[style='color: blue'],li[style='color: green']").length,
-                    change_message = ((changes != 1) ? changes+" changes" : "1 change")+" occurred";
-                $(dev_trigger).set_trigger(change_message,"success");
+                changes = $().find("li[style='color: blue'").length;
+                $this.set_trigger(changes+" Changes occurred","success");
                 setTimeout(function(){
-                    $(dev_trigger).reset_trigger();
+                    $this.reset_trigger();
                     // reload CMS
                     $('.cms-container').entwine('ss').reloadCurrentPanel();
                 }, reset_time);
             }
         })
         .fail(function( xhr, textStatus, errorThrown ) {
-            $(dev_trigger).set_trigger("Request failed: "+errorThrown,"error");
+            $this.set_trigger("Request failed: "+errorThrown,"error");
         });
 
         return false;
@@ -51,6 +51,7 @@
         document.title = message;
         $(this)
             .removeClass("error loading success")
+            .data("executing", true)
             .addClass(current_class)
             .children(".text")
             .text(message);
@@ -60,6 +61,7 @@
         document.title = default_doc_title;
         $(this).attr('href', '#')
             .removeClass("error loading success")
+            .removeData("executing")
             .children(".text")
             .text("Dev/Build");
     };
