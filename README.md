@@ -13,6 +13,18 @@ require: "mediabeast/fancy-devbuild": "1.*"
 If you have any ideas please submit an issue and label it as Enhancement.
 Pull requests are welcome!
 
+#### Customisation
+Incase your using a custom admin theme you can quickly customise the colors of the icon and text.
+For example I have added this to the *Flat Admin* CSS. Other classes are .error and .success
+```css
+.devbuild-trigger.loading {
+    color: rgb(249, 191, 59);
+
+    .icon {
+      color: rgb(249, 191, 59);
+    }
+}
+```
 
 #### Todo List
 All ideas, issues and questions will be found under Issues.
