@@ -17,7 +17,7 @@ class DevTasks extends LeftAndMainExtension {
         );
         $config_tasks = Config::inst()->get(__CLASS__, 'tasks');
 
-        $tasks = array_merge_recursive($default_tasks, $config_tasks);
+        $tasks = array_merge($default_tasks, $config_tasks);
 
         foreach ($tasks as $item => $values) {
             // Add your own attributes onto the link. In our case, we want to
