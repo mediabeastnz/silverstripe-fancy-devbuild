@@ -7,6 +7,5 @@ LeftAndMain:
     - 'fancy-devbuild/javascript/LeftAndMain.Fancy-devbuild.js'
   extra_requirements_css:
     - 'fancy-devbuild/css/fancydevbuild.css'
-ContentController:
   extensions:
-    - FancyDevBuild
+    - DevTasks
