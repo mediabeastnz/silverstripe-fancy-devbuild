@@ -31,7 +31,7 @@
                 }, reset_time);
             } else {
                 // change text back to default
-                changes = $().find("li[style='color: blue'], li[style='color: green'").length;
+                changes = $(data).find("li[style='color: blue'], li[style='color: green']").length;
                 $this.set_trigger(changes+" Changes occurred","success");
                 setTimeout(function(){
                     $this.reset_trigger();
