@@ -4,7 +4,9 @@
         default_doc_title = document.title;
 
     // look out for click
-    $(dev_trigger).click(function(e) {
+    $(dev_trigger).each(function(){
+        $(this).children('.text').text($(this).data('title'));
+    }).click(function(e) {
         var $this = $(this);
         e.preventDefault();
         if ($this.data("executing")) return false;
