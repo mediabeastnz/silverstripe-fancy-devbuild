@@ -3,25 +3,26 @@
 /**
  * Fancy Dev Build base class
  *
- * @package fancy-devbuild
+ * @package DevTasks
  *
  */
 class DevTasks extends LeftAndMainExtension {
     public function init() {
-        $default_tasks = array(
+        $tasks = array(
             'devbuild' => array(
                 'title' => 'Dev/Build',
                 'link' => 'dev/build',
                 'reset_time' => '5000'
             )
         );
-        $config_tasks = Config::inst()->get(__CLASS__, 'tasks');
 
-        $tasks = array_merge($default_tasks, $config_tasks);
+        $config_tasks = Config::inst()->get(__CLASS__, 'tasks');
+        if (is_array($config_tasks)) {
+            $tasks = array_merge($tasks, $config_tasks);
+        }
 
         foreach ($tasks as $item => $values) {
-            // Add your own attributes onto the link. In our case, we want to
-            // open the link in a new window (not the original)
+
             $attributes = array(
                 'class' => 'devbuild-trigger',
                 'data-title' => (isset($values['title']) ? $values['title'] : $item),
