@@ -1,13 +1,13 @@
 (function($) {
     var dev_trigger = ".devbuild-trigger",
-        reset_time = 5000,
         default_doc_title = document.title;
 
     // look out for click
     $(dev_trigger).each(function(){
         $(this).children('.text').text($(this).data('title'));
     }).click(function(e) {
-        var $this = $(this);
+        var $this = $(this),
+            reset_time = $this.data('reset-time');
         e.preventDefault();
         if ($this.data("executing")) return false;
 

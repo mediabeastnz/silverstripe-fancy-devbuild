@@ -11,7 +11,8 @@ class DevTasks extends LeftAndMainExtension {
         $default_tasks = array(
             'devbuild' => array(
                 'title' => 'Dev/Build',
-                'link' => 'dev/build'
+                'link' => 'dev/build',
+                'reset_time' => '5000'
             )
         );
         $config_tasks = Config::inst()->get(__CLASS__, 'tasks');
@@ -23,8 +24,9 @@ class DevTasks extends LeftAndMainExtension {
             // open the link in a new window (not the original)
             $attributes = array(
                 'class' => 'devbuild-trigger',
-                'data-title' => $values['title'],
-                'data-link' => $values['link']
+                'data-title' => (isset($values['title']) ? $values['title'] : $item),
+                'data-link' => $values['link'],
+                'data-reset-time' => (isset($values['reset_time']) ? $values['reset_time'] : '5000')
             );
 
             // priority controls the ordering of the link in the stack. The
