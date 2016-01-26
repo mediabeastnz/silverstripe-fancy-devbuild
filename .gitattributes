@@ -3,3 +3,5 @@
 /config.rb export-ignore
 /gulpfile.js export-ignore
 /package.js export-ignore
+/sass export-ignore
+.map export-ignore
