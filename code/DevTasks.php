@@ -6,8 +6,11 @@
  * @package DevTasks
  *
  */
-class DevTasks extends LeftAndMainExtension {
+class DevTasks extends LeftAndMainExtension implements PermissionProvider {
     public function init() {
+        parent::init();
+        if(!Permission::check("VIEW_DEVTASKS")) return;
+
         $tasks = array(
             'devbuild' => array(
                 'title' => 'Dev/Build',
@@ -35,5 +38,11 @@ class DevTasks extends LeftAndMainExtension {
             $priority = -90;
             CMSMenu::add_link($item, '', '#', $priority, $attributes);
         }
+    }
+
+    public function providePermissions() {
+        return array(
+            "VIEW_DEVTASKS" => "Access dev task menu",
+        );
     }
 }
