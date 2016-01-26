@@ -1,1 +1,5 @@
 /.gitignore export-ignore
+/.gitattributes export-ignore
+/config.rb export-ignore
+/gulpfile.js export-ignore
+/package.js export-ignore
