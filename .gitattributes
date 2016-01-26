@@ -1,7 +1,8 @@
 /.gitignore export-ignore
 /.gitattributes export-ignore
+/.editorconfig export-ignore
 /config.rb export-ignore
 /gulpfile.js export-ignore
 /package.js export-ignore
-/sass export-ignore
-.map export-ignore
+/scss export-ignore
+*.map export-ignore
