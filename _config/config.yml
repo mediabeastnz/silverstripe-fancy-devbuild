@@ -4,7 +4,7 @@ After: 'framework/*','cms/*'
 ---
 LeftAndMain:
   extra_requirements_javascript:
-    - 'fancy-devbuild/javascript/LeftAndMain.Fancy-devbuild.js'
+    - 'fancy-devbuild/javascript/LeftAndMain.Fancy-devbuild.min.js'
   extra_requirements_css:
     - 'fancy-devbuild/css/fancydevbuild.css'
   extensions:

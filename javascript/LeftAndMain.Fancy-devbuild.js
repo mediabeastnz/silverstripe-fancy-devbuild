@@ -1,15 +1,18 @@
 (function($) {
     var dev_trigger = ".devbuild-trigger",
-        default_doc_title = document.title;
+        default_doc_title = document.title,
+        trigger_classes = "error loading success",
+        executing = "executing",
+        text_class = '.text';
 
-    // look out for click
     $(dev_trigger).each(function(){
-        $(this).children('.text').text($(this).data('title'));
-    }).click(function(e) {
+        $(this).children(text_class).text($(this).data('title'));
+    }).click(function(event) {// look out for click
+        event.preventDefault();
         var $this = $(this),
             reset_time = $this.data('reset-time');
-        e.preventDefault();
-        if ($this.data("executing")) return false;
+
+        if ($this.data(executing)) return false;
 
         $this.set_trigger("Building...", "loading");
 
@@ -18,14 +21,11 @@
             url: $this.data('link')
         })
         .done(function( data, textStatus, xhr ) {
-            // remove classes
-            $this.removeClass("loading");
-
             // search for any errors from returned data
             if (data.search("ERROR") > 0) {
                 // change text to show an error has occured
                 $this.attr('href', $this.data('link'))
-                    .set_trigger("Build failed","error");
+                    .set_trigger("Build failed", "error");
                 setTimeout(function(){
                     $this.reset_trigger();
                 }, reset_time);
@@ -50,20 +50,20 @@
     $.fn.set_trigger = function(message, current_class) {
         document.title = message;
         $(this)
-            .removeClass("error loading success")
-            .data("executing", true)
+            .removeClass(trigger_classes)
+            .data(executing, true)
             .addClass(current_class)
-            .children(".text")
+            .children(text_class)
             .text(message);
     };
 
     $.fn.reset_trigger = function() {
         document.title = default_doc_title;
-        $(this).attr('href', '#')
-            .removeClass("error loading success")
-            .removeData("executing")
-            .children(".text")
+        $(this)
+            .removeClass(trigger_classes)
+            .removeData(executing)
+            .children(text_class)
             .text($(this).data('title'));
     };
 
-}(jQuery));
+}(jQuery));;
