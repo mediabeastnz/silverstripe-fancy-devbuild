@@ -19,7 +19,9 @@ class DevTasks extends LeftAndMainExtension implements PermissionProvider
             'devbuild' => array(
                 'title' => 'Dev/Build',
                 'link' => 'dev/build',
-                'reset_time' => '5000'
+                'reset_time' => '5000',
+                'error_handler' => 'newtab',
+                'success_handler' => 'ignore'
             )
         );
 
@@ -34,8 +36,10 @@ class DevTasks extends LeftAndMainExtension implements PermissionProvider
             $attributes = array(
                 'class' => 'devbuild-trigger',
                 'data-title' => (isset($values['title']) ? $values['title'] : $item),
-                'data-link' => $values['link'],
-                'data-reset-time' => (isset($values['reset_time']) ? $values['reset_time'] : '5000')
+                'data-link' => (isset($values['link']) ? $values['link'] : 'dev/build'),
+                'data-reset-time' => (isset($values['reset_time']) ? $values['reset_time'] : '5000'),
+                'data-error-handler' => (isset($values['error_handler']) ? $values['error_handler'] : 'newtab'),
+                'data-success-handler' => (isset($values['success_handler']) ? $values['success_handler'] : 'ignore')
             );
 
             // priority controls the ordering of the link in the stack. The
