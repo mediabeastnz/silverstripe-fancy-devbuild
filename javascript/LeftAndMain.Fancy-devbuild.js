@@ -1,6 +1,49 @@
 (function($) {
     var dev_trigger = ".devbuild-trigger",
+        all_states = "error loading success";
         default_doc_title = document.title;
+
+    $.fn.set_trigger = function(message, current_class) {
+        document.title = message;
+        $(this)
+            .removeClass(all_states)
+            .data("executing", true)
+            .addClass(current_class)
+            .children(".text")
+            .text(message);
+    };
+
+    $.fn.reset_trigger = function() {
+        document.title = default_doc_title;
+        $(this).attr('href', '#')
+            .removeClass(all_states)
+            .removeData("executing")
+            .children(".text")
+            .text($(this).data('title'));
+    };
+
+    function completion_handler(data, handler_option){
+        if (handler_option){
+            switch (handler_option) {
+                //case 'log':
+                //    break;
+                // case 'popup':
+                //     dialog.ssdialog({iframeUrl: this.attr('href'), autoOpen: true, dialogExtraClass: extraClass});
+                //    break;
+                case 'newtab':
+                    // Display error in new tab/window
+                    with(window.open('about:blank').document) {
+                        open();
+                        write(data);
+                        close();
+                    }
+                    break;
+                case 'ignore':
+                default:
+                    break;
+            }
+        }
+    }
 
     // look out for click
     $(dev_trigger).each(function(){
@@ -23,13 +66,15 @@
 
             // search for any errors from returned data
             if (data.search("ERROR") > 0) {
+                completion_handler(data, $this.data('error-handler'));
                 // change text to show an error has occured
                 $this.attr('href', $this.data('link'))
-                    .set_trigger("Build failed","error");
+                    .set_trigger("Build failed", "error");
                 setTimeout(function(){
                     $this.reset_trigger();
                 }, reset_time);
             } else {
+                completion_handler(data, $this.data('success-handler'));
                 // change text back to default
                 changes = $(data).find("li[style='color: blue'], li[style='color: green']").length;
                 $this.set_trigger(changes+" Changes occurred","success");
@@ -42,28 +87,12 @@
         })
         .fail(function( xhr, textStatus, errorThrown ) {
             $this.set_trigger("Request failed: "+errorThrown,"error");
+            setTimeout(function(){
+                $this.reset_trigger();
+            }, reset_time);
         });
 
         return false;
     });
-
-    $.fn.set_trigger = function(message, current_class) {
-        document.title = message;
-        $(this)
-            .removeClass("error loading success")
-            .data("executing", true)
-            .addClass(current_class)
-            .children(".text")
-            .text(message);
-    };
-
-    $.fn.reset_trigger = function() {
-        document.title = default_doc_title;
-        $(this).attr('href', '#')
-            .removeClass("error loading success")
-            .removeData("executing")
-            .children(".text")
-            .text($(this).data('title'));
-    };
 
 }(jQuery));
