@@ -18,9 +18,9 @@ DevTasks:
     newdevtaskid:
       title: Dev/NewTask
       link: dev/task
-      reset_time: 5000
-      error_handler: newtab
-      success_handler: ignore
+      reset_time: 5000 # Optional
+      error_handler: newtab # Optional
+      success_handler: ignore # Optional
 ```
 
 #### Theming
@@ -39,9 +39,9 @@ For example I have added this to the *Flat Admin* CSS. Other classes are .error 
 These screenshots are of the very first version of this module and are likely to change.
 They give you a quick idea of what the module does.
 
-##### Default button status
+#### Default button status
 <img width="300px" src="http://i.imgur.com/zYmHiQ4.png" alt="Default button status">
-##### After a click the site will build the database and flush in the background
+#### After a click the site will build the database and flush in the background
 <img width="300px" src="http://i.imgur.com/Aik95L7.png" alt="After a click the site will build the database and flush in the background">
 
 ### Contributing
