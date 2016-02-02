@@ -2,6 +2,8 @@
 Simple SilverStripe module to trigger a dev/build via ajax in the CMS.
 This will allow you to close that extra tab that we all keep open just for dev/build.
 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mediabeastnz/silverstripe-fancy-devbuild/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mediabeastnz/silverstripe-fancy-devbuild/?branch=master)
+
 ## Installation
 Composer is the recommended way of installing SilverStripe modules.
 ```
