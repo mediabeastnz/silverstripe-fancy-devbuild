@@ -13,7 +13,9 @@ class DevTasks extends LeftAndMainExtension implements PermissionProvider
     {
         parent::init();
 
-        if (!Permission::check("VIEW_DEVTASKS")) return;
+        if (!Permission::check("VIEW_DEVTASKS")) {
+            return;
+        }
 
         $tasks = array(
             'devbuild' => array(
