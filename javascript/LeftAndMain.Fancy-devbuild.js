@@ -61,11 +61,8 @@
             url: $this.data('link')
         })
         .done(function( data, textStatus, xhr ) {
-            // remove classes
-            $this.removeClass("loading");
-
             // search for any errors from returned data
-            if (data.search("ERROR") > 0) {
+            if ($(data).find($this.data('error-markup')).length > 0) {
                 completion_handler(data, $this.data('error-handler'));
                 // change text to show an error has occured
                 $this.attr('href', $this.data('link'))
@@ -76,7 +73,7 @@
             } else {
                 completion_handler(data, $this.data('success-handler'));
                 // change text back to default
-                changes = $(data).find("li[style='color: blue'], li[style='color: green']").length;
+                changes = $(data).find($this.data('success-markup')).length;
                 $this.set_trigger(changes+" Changes occurred","success");
                 setTimeout(function(){
                     $this.reset_trigger();

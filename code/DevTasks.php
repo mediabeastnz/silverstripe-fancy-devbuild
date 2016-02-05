@@ -17,12 +17,14 @@ class DevTasks extends LeftAndMainExtension implements PermissionProvider
             return;
         }
 
-        $tasks = array(
+        $default_tasks = array(
             'devbuild' => array(
                 'title' => 'Dev/Build',
                 'link' => 'dev/build',
                 'reset_time' => '5000',
+                'error_markup'=> '.xdebug-error,.xe-parse-error',
                 'error_handler' => 'newtab',
+                'success_markup'=> 'li[style="color: blue"],li[style="color: green"]',
                 'success_handler' => 'ignore'
             )
         );
@@ -30,7 +32,9 @@ class DevTasks extends LeftAndMainExtension implements PermissionProvider
         $config_tasks = Config::inst()->get(__CLASS__, 'tasks');
 
         if (is_array($config_tasks)) {
-            $tasks = array_merge($tasks, $config_tasks);
+            $tasks = array_merge($default_tasks, $config_tasks);
+        }else{
+            $tasks = $default_tasks;
         }
 
         foreach ($tasks as $item => $values) {
@@ -38,10 +42,12 @@ class DevTasks extends LeftAndMainExtension implements PermissionProvider
             $attributes = array(
                 'class' => 'devbuild-trigger',
                 'data-title' => (isset($values['title']) ? $values['title'] : $item),
-                'data-link' => (isset($values['link']) ? $values['link'] : 'dev/build'),
-                'data-reset-time' => (isset($values['reset_time']) ? $values['reset_time'] : '5000'),
-                'data-error-handler' => (isset($values['error_handler']) ? $values['error_handler'] : 'newtab'),
-                'data-success-handler' => (isset($values['success_handler']) ? $values['success_handler'] : 'ignore')
+                'data-link' => (isset($values['link']) ? $values['link'] : $default_tasks['devbuild']['link']),
+                'data-reset-time' => (isset($values['reset_time']) ? $values['reset_time'] : $default_tasks['devbuild']['reset_time']),
+                'data-error-markup' => (isset($values['error_markup']) ? $values['error_markup'] : $default_tasks['devbuild']['error_markup']),
+                'data-error-handler' => (isset($values['error_handler']) ? $values['error_handler'] : $default_tasks['devbuild']['error_handler']),
+                'data-success-markup' => (isset($values['success_markup']) ? $values['success_markup'] : $default_tasks['devbuild']['success_markup']),
+                'data-success-handler' => (isset($values['success_handler']) ? $values['success_handler'] : $default_tasks['devbuild']['success_handler'])
             );
 
             // priority controls the ordering of the link in the stack. The
