@@ -16,7 +16,7 @@ Run dev/build the "Normal way".
 You can define additional links in your config.yml
 ```
 DevTasks:
-  Tasks:
+  tasks:
     newdevtaskid:
       title: Dev/NewTask
       link: dev/task
